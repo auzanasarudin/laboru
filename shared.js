@@ -21,8 +21,8 @@ window.LABORU_CONFIG = {
     r09: 'https://lynk.id/auzanasar/qv7nxdklvl7r/checkout'
   },
   // Google Sheet harga & link (File > Bagikan > Siapa saja yang memiliki link: Pelihat). Isi ID sheet di sini;
-  // kolom: kode | nama | harga | harga_coret | link_checkout. Kosongkan untuk memakai nilai di file ini.
-  sheetId: '',
+  // kolom: kode | nama | harga | harga_coret | link_checkout. Sheet: 'LABORU - Harga & Link Checkout' di Google Drive. Kosongkan untuk memakai nilai di file ini.
+  sheetId: '1SSruj8FmwkTDPRzwBfvzb2QyH2LoADte7cwcqZCXKOU',
 
   waAdmin: '',            // nomor WA admin format 62812xxxx (dipakai bila link checkout belum diisi)
   waCommunity: 'https://chat.whatsapp.com/JJk1WKvTX3d7qCen7Br7xe',
@@ -102,7 +102,7 @@ window.LABORU_PRODUCTS = {
   const num = v => Number(String(v || '').replace(/[^0-9]/g, '')) || 0;
   if (C.sheetId) {
     const ctl = window.AbortController ? new AbortController() : null; if (ctl) setTimeout(() => ctl.abort(), 4000);
-    fetch('https://docs.google.com/spreadsheets/d/' + C.sheetId + '/gviz/tq?tqx=out:csv&sheet=LANDING', ctl ? { signal: ctl.signal } : {})
+    fetch('https://docs.google.com/spreadsheets/d/' + C.sheetId + '/gviz/tq?tqx=out:csv', ctl ? { signal: ctl.signal } : {})
       .then(r => r.ok ? r.text() : Promise.reject()).then(t => {
         csvRows(t).slice(1).forEach(([k, n, h, v, link]) => { k = (k || '').trim(); if (!PR[k]) return; if (num(h)) PR[k].p = num(h); if (num(v)) PR[k].v = num(v); if (n && n.trim()) PR[k].n = n.trim(); if (link && /^https?:\/\//.test(link.trim())) C.checkout[k] = link.trim() });
         if (document.readyState !== 'loading') fill();
