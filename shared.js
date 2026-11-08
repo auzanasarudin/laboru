@@ -2,7 +2,7 @@
    LABORU · KONFIGURASI TOKO  (ISI BAGIAN INI SAJA)
    ===================================================================== */
 window.LABORU_CONFIG = {
-  pixelId: '',            // contoh: '1234567890123456'  (Events Manager > Data Sources > Pixel ID)
+  pixelId: '1767584857850627',  // dataset 'LABORU TEMPLATE' (akun iklan ZANS TEKNIK)
   currency: 'IDR',
   checkout: {             // link checkout Lynk.id (bisa juga diubah lewat Google Sheet: lihat sheetCsv di bawah)
     entry_work:    'https://lynk.id/auzanasar/rx7w59xzxrrr/checkout',
