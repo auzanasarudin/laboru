@@ -267,7 +267,7 @@ footer{background:#0a1120;color:#aeb9cf;font-size:13.5px;padding:28px 0 96px}foo
    <ul>
     <li><b>Semua isi Core</b> + aplikasi <b>PRO</b>: Financial Freedom, Weekly To-Do, Budget 50/30/20, Ruang Investasi</li>
     <li><b>LABO Asisten (Companion)</b>: peliharaan virtual interaktif</li>
-    <li><b>Ebook From Zero to Financial Freedom</b> Vol. 1 + Level Up Diri</li>
+    <li><b>2 ebook 500 halaman</b>: From Zero to Financial Freedom + Level Up Diri</li>
     <li><b>Company Preparation System</b>: hub + 390+ dokumen</li>
     <li><b>Company Improvement System</b> + roadmap 90 hari</li>
    </ul>
@@ -293,8 +293,8 @@ footer{background:#0a1120;color:#aeb9cf;font-size:13.5px;padding:28px 0 96px}foo
  <div class="reveal">
   <div class="k">Baru · Ebook pixel-art</div>
   <h2>From Zero to <em>Financial Freedom</em></h2>
-  <p class="lead">Ensiklopedia 500 halaman yang diterbitkan bertahap. Volume 1 membahas realitas hidup & uang dan jebakan finansial yang tidak terlihat — dengan simulasi angka, decision room, dan workbook.</p>
-  <ul style="padding-left:20px;margin:0 0 20px"><li>61 halaman, ilustrasi pixel art, siap dibaca di HP atau dicetak</li><li>Master Page Blueprint 500 halaman (PDF + Excel)</li><li>Volume berikutnya dikirim gratis ke pembeli</li></ul>
+  <p class="lead">Ensiklopedia 500 halaman, lengkap dalam satu PDF: dari realitas hidup & uang, membangun ulang diri, karyawan → self-employed → pemilik bisnis → investor, sampai rumus Freedom Ratio dan program 12 bulan.</p>
+  <ul style="padding-left:20px;margin:0 0 20px"><li>500 halaman pixel art, siap dibaca di HP atau dicetak</li><li>Simulasi angka, decision room, workbook di setiap bab</li><li>Program 12 bulan + field manual & glosarium</li></ul>
   <div class="cta"><button class="btn green" data-buy="r09" data-src="ebook">Beli ebook · <span data-price="r09">Rp49.000</span></button><a class="btn" href="#paket">Gratis di Ultimate</a></div>
  </div>
 </div></section>
@@ -343,12 +343,12 @@ footer{background:#0a1120;color:#aeb9cf;font-size:13.5px;padding:28px 0 96px}foo
 const ENTRY={entry_work:['Dashboard karier Excel + Google Sheets','180 template CV ATS (ID & EN)','180 cover letter (ID & EN)','15 bidang kerja × 6 latar belakang'],entry_habit:['LABORU Daily Management (Excel + Sheets)','Weekly To-Do, Habit Builder 10×31','Task Manager, Budget 50/30/20, Debt Payment','Panduan PDF'],entry_finance:['LABORU Wealth Builder 17 sheet','Financial X-Ray, arus kas, dana darurat','Debt recovery, aset & liabilitas, roadmap 12 bulan','File contoh terisi + Google Sheets']};
 const EPV={entry_work:'ENTRY_Work-Toolkit',entry_habit:'ENTRY_Habit-Toolkit',entry_finance:'ENTRY_Finance-Toolkit'};function setEntry(k){const pv=document.getElementById('entryPv');if(pv)pv.src='img/pv/'+EPV[k]+'.jpg';document.querySelectorAll('#entrySeg button').forEach(b=>b.classList.toggle('on',b.dataset.e===k));document.getElementById('entryList').innerHTML=ENTRY[k].map(x=>'<li>'+x+'</li>').join('');document.getElementById('entryBuy').dataset.buy=k}
 document.getElementById('entrySeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setEntry(b.dataset.e)});setEntry('entry_work');
-const EC=[['r09','Ebook From Zero to Financial Freedom Vol. 1','R09_Ebook-From-Zero-to-Financial-Freedom','Ebook pixel-art tentang realitas uang & jebakan finansial.',['61 halaman: Part 00 Reality of Life & Money + Part 01 Invisible Trap','Studi kasus simulasi, decision room, workbook & mission log','Master Page Blueprint 500 halaman (PDF + Excel)','Volume berikutnya dikirim gratis'],1],
+const EC=[['r09','Ebook From Zero to Financial Freedom','R09_Ebook-From-Zero-to-Financial-Freedom','Ensiklopedia pixel-art 500 halaman: dari nol sampai bebas finansial.',['500 halaman lengkap, 10 part, 28 bab','Studi kasus simulasi, decision room, workbook & mission log','Program 12 bulan + weekly tracker','Field manual: checklist, KPI, glosarium'],1],
 ['r01','CV ATS Pack','R01_CV-ATS-Pack','CV satu kolom yang terbaca sistem ATS rekrutmen.',['180 template Word (.docx), Indonesia & Inggris','15 bidang kerja × 6 latar belakang (fresh graduate s/d manajer)','Panduan pengisian di setiap file','Bisa diedit di Word / Google Docs']],
 ['r02','Creative CV & Portfolio Pack','R02_Creative-CV-Portfolio-Pack','Tampil beda dengan CV kreatif & portofolio studi kasus.',['180 CV kreatif berwarna (ID & EN)','180 portfolio paper format before–after','15 bidang kerja, dengan contoh isi','Word (.docx), siap ekspor PDF']],
 ['r03','Cover Letter & Email Lamaran','R03_Cover-Letter-Email-Pack','Surat & email lamaran yang tinggal disesuaikan.',['180 cover letter formal (ID & EN)','180 email lamaran: subjek + isi siap kirim','15 bidang kerja × 6 latar belakang','Word (.docx)']],
 ['r05','LABO Asisten','R05_Labo-Companion-App','Teman virtual yang tumbuh bersama kebiasaan harianmu.',['Rawat Labo: beri makan, main, dan tidurkan','Cek-in mood & refleksi singkat','Level naik seiring kebiasaan baik','Android (APK), iPhone (Web App), Windows, macOS']],
-['r06','Ebook Level Up Diri','R06_Ebook-Level-Up-Diri','Program 30 hari untuk kebiasaan, karier, keuangan & mental.',['16 halaman PDF + worksheet siap cetak','Langkah kecil tiap hari, 4 area hidup','Dibaca di HP atau laptop']],
+['r06','Ebook Level Up Diri','R06_Ebook-Level-Up-Diri','Ebook + workbook 52 minggu untuk kebiasaan, karier, keuangan & mental.',['500 halaman: fondasi + program 52 minggu','Quest, worksheet, log harian & habit tracker tiap minggu','Review bulanan, kuartal & tahunan + lampiran siap cetak']],
 ['r07','Company Preparation System','R07_Company-Preparation-System','Sistem perusahaan siap pakai dalam satu hub.',['Company System Hub (buka di browser)','390+ dokumen: governance, struktur & peran, SOP, kontrol dokumen, HR, procurement, audit internal','Template kosong + contoh terisi + workflow','Roadmap implementasi 90 hari']],
 ['r08','Company Improvement System','R08_Company-Improvement-System','Turunkan downtime, naikkan efisiensi secara terukur.',['Downtime Tracker + ROI Calculator (Excel)','Production Efficiency Playbook + worked example','7 tracker: KPI, CAPA, tenggat, dokumen, SOP, procurement, supplier','Panduan Bahasa Indonesia + 15 AI prompt bisnis']]];
 const P=LABORU_PRODUCTS,fmt=n=>n.toLocaleString('id-ID',{maximumFractionDigits:1});
