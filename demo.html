@@ -745,52 +745,59 @@ function P2demo(){try{if(!S||S.p2demo)return;const now=new Date(),m=P2mon(now);S
 '.ffsc.rr .ffbn{z-index:3}.ffsc.rr .rrsp{position:absolute;right:8px;bottom:8px;z-index:3;background:rgba(11,10,18,.8);color:#fff;font:700 11px/1.3 system-ui,sans-serif;padding:5px 8px;border-radius:6px;max-width:58%}'+
 '.ffsc.rr .rrsp b{display:block;font-size:12px}.ffsc.rr .rrit{position:absolute;left:8px;bottom:8px;z-index:3;display:flex;gap:3px;flex-wrap:wrap;max-width:40%}.ffsc.rr .rrit svg{width:20px;height:20px}'+
 '.ffsc.rr .rrit small{color:#fff;background:rgba(11,10,18,.65);padding:3px 6px;border-radius:5px;font-size:11px}'+
-'.rrrun .lg1{animation:rrA var(--cad) ease-in-out infinite alternate}.rrrun .lg2{animation:rrB var(--cad) ease-in-out infinite alternate}'+
-'.rrrun .ar1{animation:rrC var(--cad) ease-in-out infinite alternate}.rrrun .ar2{animation:rrD var(--cad) ease-in-out infinite alternate}'+
-'.rrrun .lg1,.rrrun .lg2{transform-origin:12px 19px}.rrrun .ar1,.rrrun .ar2{transform-origin:12px 10px}.rrrun .tor{transform-origin:12px 19px;transform:rotate(var(--lean))}'+
-'.rrrun .hd{transform-origin:12px 8px;transform:rotate(var(--droop))}.rrrun .bob{animation:rrBob calc(var(--cad) / 1) ease-in-out infinite alternate}'+
-'.rrrun .sw{animation:rrSw 0.9s linear infinite}.rrrun .sw2{animation-delay:-.45s}'+
+'.rrrun .rrlg1{animation:rrA var(--cad) ease-in-out infinite alternate}.rrrun .rrlg2{animation:rrB var(--cad) ease-in-out infinite alternate}'+
+'.rrrun .rrar1{animation:rrC var(--cad) ease-in-out infinite alternate}.rrrun .rrar2{animation:rrD var(--cad) ease-in-out infinite alternate}'+
+'.rrrun .rrlg1,.rrrun .rrlg2{transform-origin:12px 19px}.rrrun .rrar1,.rrrun .rrar2{transform-origin:12px 10px}.rrrun .rrtor{transform-origin:12px 19px;transform:rotate(var(--lean))}'+
+'.rrrun .rrhd{transform-origin:12px 8px;transform:rotate(var(--droop))}.rrrun .rrbob{animation:rrBob calc(var(--cad) / 1) ease-in-out infinite alternate}'+
+'.rrrun .rrsw{animation:rrSw 0.9s linear infinite}.rrrun .rrsw2{animation-delay:-.45s}'+
 '@keyframes rrA{from{transform:rotate(var(--leg))}to{transform:rotate(calc(var(--leg) * -1))}}@keyframes rrB{from{transform:rotate(calc(var(--leg) * -1))}to{transform:rotate(var(--leg))}}'+
 '@keyframes rrC{from{transform:rotate(calc(var(--arm) * -1 + var(--hang)))}to{transform:rotate(calc(var(--arm) + var(--hang)))}}@keyframes rrD{from{transform:rotate(calc(var(--arm) + var(--hang)))}to{transform:rotate(calc(var(--arm) * -1 + var(--hang)))}}'+
 '@keyframes rrBob{from{transform:translateY(0)}to{transform:translateY(var(--bob))}}@keyframes rrSw{0%{transform:translate(0,0);opacity:1}100%{transform:translate(-6px,8px);opacity:0}}'+
-'.rrexit{animation:rrOut 3.4s ease-out forwards}@keyframes rrOut{from{transform:translate(0,0)}to{transform:translate(72px,40px)}}'+
+'.rrexit{animation:rrOut 3.4s ease-out forwards}@keyframes rrOut{from{transform:translate(0,0)}to{transform:translate(70px,0)}}'+
 '@media (prefers-reduced-motion:reduce){.rrrun *,.rrexit,.rrring{animation:none!important}}';
 document.head.appendChild(st)})();
 function rrRunner(st,r,free){
- var C=[['#e8e8e8','#7a5a3a','#3b3b3b'],['#f1f1f1','#2f3e5c','#2b2b2b'],['#4a90d9','#2f3e5c','#222'],['#e9eef7','#24324f','#1c1c1c'],['#24324f','#1b2438','#111'],['#24324f','#1b2438','#111']][st];
- var shirt=C[0],pants=C[1],shoe=C[2],skin='#f2c9a0',skin2='#d9a77e',hair='#2a1c12';
- var t=free?1:r,lean=Math.round(22-t*20),leg=Math.round(14+t*24),arm=Math.round(10+t*30),hang=Math.round(t<.35?28:t<.6?14:0),droop=Math.round(t<.35?14:t<.6?6:0),cad=(0.26+t*0.3).toFixed(2),bob=t<.35?'1.2px':'-1.6px';
+ var c=(typeof meCfg==='function')?meCfg():{skin:'#f1c9a0',hair:'#2b2118',shirt:'#2f6fd6'},k=(typeof wornN==='function')?wornN(st,6):st+1;
+ var sh=function(h,a){try{return shade(h,a)}catch(e){return h}};
+ var skin=c.skin||'#f1c9a0',skin2=sh(skin,-.16),hair=c.hair||'#2b2118',shirt=c.shirt||'#2f6fd6',pants=c.pants||'#27324f',jacket=sh(shirt,-.5);
+ var fem=false;try{fem=prof().gender==='wanita'||+c.style===1}catch(e){}
+ var top=k>=6?jacket:k>=4?shirt:skin,arm=k>=4?(k>=6?jacket:shirt):skin,leg=k>=3?pants:skin,shoe=k>=2?'#1b1b1b':skin2,shorts=k>=1&&k<3?'#d9434b':null;
+ var t=free?1:r,lean=Math.round(22-t*20),legA=Math.round(14+t*24),armA=Math.round(10+t*30),hang=Math.round(t<.35?28:t<.6?14:0),droop=Math.round(t<.35?14:t<.6?6:0),cad=(0.26+t*0.3).toFixed(2),bob=t<.35?'1.2px':'-1.6px';
  var tired=!free&&t<.45,smile=t>=.7||free;
  var mouth=tired?"<rect x='15.5' y='5.4' width='1.4' height='1.4' fill='#5a1f1f'/>":smile?"<rect x='14.6' y='5.6' width='2' height='.6' fill='#5a1f1f'/>":"<rect x='14.8' y='5.8' width='1.6' height='.5' fill='#5a1f1f'/>";
- var tie=st>=3?"<rect x='12.6' y='10' width='1' height='5' fill='#c0392b'/>":'';
- var sweat=tired?"<circle class='sw' cx='9.5' cy='3' r='.8' fill='#9fd8ff'/><circle class='sw sw2' cx='10.5' cy='5' r='.7' fill='#9fd8ff'/>":'';
- return "<svg x='-26' y='-66' width='52' height='69' viewBox='0 0 24 32' class='rrrun' style='--lean:"+lean+"deg;--leg:"+leg+"deg;--arm:"+arm+"deg;--hang:"+hang+"deg;--droop:"+droop+"deg;--cad:"+cad+"s;--bob:"+bob+";overflow:visible'><g class='bob'>"+
-  "<g class='lg2'><rect x='11' y='19' width='3' height='9' fill='"+pants+"' opacity='.75'/><rect x='11' y='27.5' width='4.5' height='2' fill='"+shoe+"'/></g>"+
-  "<g class='tor'><g class='ar2'><rect x='11' y='10' width='2.4' height='8' fill='"+skin2+"'/></g>"+
-  "<rect x='9.5' y='9' width='6' height='10.5' rx='1' fill='"+shirt+"'/>"+tie+
-  "<g class='hd'><rect x='9.5' y='1.5' width='7.5' height='7.5' rx='1.2' fill='"+skin+"'/><rect x='9.2' y='1' width='7.8' height='2.6' fill='"+hair+"'/><rect x='9.2' y='1' width='2.4' height='5' fill='"+hair+"'/><rect x='15' y='3.6' width='1.1' height='1.3' fill='#1b1b1b'/>"+mouth+sweat+"</g>"+
-  "<g class='ar1'><rect x='11.2' y='10' width='2.6' height='8.4' fill='"+skin+"'/><rect x='11.2' y='10' width='2.6' height='3.2' fill='"+shirt+"'/></g></g>"+
-  "<g class='lg1'><rect x='11' y='19' width='3.2' height='9' fill='"+pants+"'/><rect x='11' y='27.5' width='4.8' height='2' fill='"+shoe+"'/></g>"+
+ var tie=k>=5?"<rect x='13.6' y='10' width='1' height='5' fill='#c0392b'/>":'';
+ var gl=+c.glasses?"<rect x='14.4' y='3.3' width='2.4' height='1.8' fill='none' stroke='#1b1b1b' stroke-width='.5'/>":'';
+ var pony=fem?"<rect x='7.4' y='2.4' width='2.4' height='5.6' rx='1' fill='"+hair+"'/>":'';
+ var sweat=tired?"<circle class='rrsw' cx='9.5' cy='3' r='.8' fill='#9fd8ff'/><circle class='rrsw rrsw2' cx='10.5' cy='5' r='.7' fill='#9fd8ff'/>":'';
+ var shortsL=shorts?"<rect x='11' y='19' width='3.2' height='3' fill='"+shorts+"'/>":'';
+ return "<svg x='-24' y='-62' width='48' height='64' viewBox='0 0 24 32' class='rrrun' style='--lean:"+lean+"deg;--leg:"+legA+"deg;--arm:"+armA+"deg;--hang:"+hang+"deg;--droop:"+droop+"deg;--cad:"+cad+"s;--bob:"+bob+";overflow:visible'><g class='rrbob'>"+
+  "<g class='rrlg2'><rect x='11' y='19' width='3' height='9' fill='"+leg+"' opacity='.78'/>"+(shorts?"<rect x='11' y='19' width='3' height='3' fill='"+shorts+"' opacity='.78'/>":'')+"<rect x='11' y='27.5' width='4.5' height='2' fill='"+shoe+"'/></g>"+
+  "<g class='rrtor'><g class='rrar2'><rect x='11' y='10' width='2.4' height='8' fill='"+sh(arm,-.12)+"'/><rect x='11' y='16.4' width='2.4' height='1.8' fill='"+skin2+"'/></g>"+
+  "<rect x='9.5' y='9' width='6' height='10.5' rx='1' fill='"+top+"'/>"+(k>=6?"<rect x='12' y='9.2' width='2' height='8' fill='"+shirt+"'/>":'')+tie+
+  "<g class='rrhd'>"+pony+"<rect x='9.5' y='1.5' width='7.5' height='7.5' rx='1.2' fill='"+skin+"'/><rect x='9.2' y='1' width='7.8' height='2.6' fill='"+hair+"'/><rect x='9.2' y='1' width='2.4' height='5' fill='"+hair+"'/><rect x='15' y='3.6' width='1.1' height='1.3' fill='#1b1b1b'/>"+gl+mouth+sweat+"</g>"+
+  "<g class='rrar1'><rect x='11.2' y='10' width='2.6' height='8.4' fill='"+arm+"'/><rect x='11.2' y='16.6' width='2.6' height='1.8' fill='"+skin+"'/></g></g>"+
+  "<g class='rrlg1'><rect x='11' y='19' width='3.2' height='9' fill='"+leg+"'/>"+shortsL+"<rect x='11' y='27.5' width='4.8' height='2' fill='"+shoe+"'/></g>"+
  "</g></svg>"}
 function ffScene(f,T){var r=Math.min(1,T.ratio||0),free=!!f.free,st=Math.min(5,Math.floor(r*6));
- var hue=free?45:Math.round(r*120),track=free?'#9a9fae':'hsl('+hue+',72%,48%)',lane=free?'#d5d8e0':'hsl('+hue+',70%,74%)';
+ var hue=free?45:Math.round(r*120),track=free?'#9a9fae':'hsl('+hue+',72%,48%)',spoke=free?'#c9ccd6':'hsl('+hue+',30%,82%)';
  var bg=free?'linear-gradient(#7fd6ff,#ffe9a8 72%,#f2cf7a)':'linear-gradient(hsl('+(200+r*20)+','+Math.round(15+r*40)+'%,'+Math.round(18+r*28)+'%),hsl('+(200+r*20)+','+Math.round(15+r*40)+'%,'+Math.round(10+r*22)+'%))';
- var dur=(2.2+r*10).toFixed(2),cnt={kos:0,biz:0,dig:0,fin:0};
+ var dur=(1.6+r*8).toFixed(2),cnt={kos:0,biz:0,dig:0,fin:0};
  (f.assets||[]).forEach(function(a){var k=ffIk(a.k);cnt[k]+=a.k==='sah'||a.k==='sbn'||a.k==='dep'?Math.max(1,Math.min(3,Math.round(a.v/100e6))):1});
  var ic=[];['kos','biz','dig','fin'].forEach(function(k){for(var i=0;i<Math.min(cnt[k],5);i++)ic.push(FFI[k])});
- var cx=100,cy=150,R=100,items='';
- ic.slice(0,12).forEach(function(s,i){var a=(i/Math.max(1,Math.min(12,ic.length)))*360;items+='<g transform="rotate('+a+' '+cx+' '+cy+') translate('+(cx-5)+','+(cy-R-13)+')"><svg width="10" height="10" viewBox="0 0 16 16">'+s.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')+'</svg></g>'});
- var spin=free?'':'<animateTransform attributeName="transform" type="rotate" from="0 '+cx+' '+cy+'" to="-360 '+cx+' '+cy+'" dur="'+dur+'s" repeatCount="indefinite"/>';
- var ring='<g class="rrring"><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke="'+track+'" stroke-width="10"/><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke="'+lane+'" stroke-width="1.2" stroke-dasharray="6 6"/>'+items+spin+'</g>';
- var road=free?'<path d="M100,50 C130,52 160,70 210,92" fill="none" stroke="#e8c55a" stroke-width="9"/><path d="M100,50 C130,52 160,70 210,92" fill="none" stroke="#fff6d0" stroke-width="1.2" stroke-dasharray="5 5"/>':'';
- var runner='<g transform="translate(100,50)"><g class="'+(free?'rrexit':'')+'">'+rrRunner(st,r,free)+'</g></g>';
- var lines=!free&&r<.45?'<g stroke="rgba(255,255,255,.7)" stroke-width="1"><line x1="78" y1="30" x2="66" y2="30"/><line x1="76" y1="38" x2="60" y2="38"/><line x1="80" y1="44" x2="70" y2="44"/></g>':'';
- var svg='<svg class="rrsv" viewBox="0 0 200 110" preserveAspectRatio="xMidYMax meet" aria-hidden="true">'+road+ring+lines+runner+'</svg>';
- var stN=['Terjebak: lari tergesa-gesa & kelelahan, gaji langsung habis','Mulai menyisihkan, napas mulai teratur','Aset pertama memperlambat putaran','Aset bertambah, langkah makin santai','Hampir bebas, lintasan mulai hijau','Tinggal selangkah lagi keluar'][st];
+ var cx=100,cy=56,R=50,items='',sp='';
+ for(var i=0;i<12;i++){var a=i*Math.PI/6;sp+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+R*Math.cos(a)).toFixed(1)+'" y2="'+(cy+R*Math.sin(a)).toFixed(1)+'" stroke="'+spoke+'" stroke-width="1.2"/>'}
+ ic.slice(0,10).forEach(function(s,i){var a=(i/Math.max(1,Math.min(10,ic.length)))*360;items+='<g transform="rotate('+a+' '+cx+' '+cy+') translate('+(cx-4)+','+(cy-R-4)+')"><svg width="8" height="8" viewBox="0 0 16 16">'+s.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')+'</svg></g>'});
+ var spin=free?'':'<animateTransform attributeName="transform" type="rotate" from="0 '+cx+' '+cy+'" to="360 '+cx+' '+cy+'" dur="'+dur+'s" repeatCount="indefinite"/>';
+ var wheel='<g'+(free?' transform="translate(-34,0) rotate(-14 100 56)" opacity=".55"':'')+'><circle cx="'+cx+'" cy="'+cy+'" r="'+(R+4)+'" fill="rgba(0,0,0,.18)"/><g class="rrring">'+sp+'<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke="'+track+'" stroke-width="6"/><circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1" stroke-dasharray="4 5"/>'+items+spin+'</g><circle cx="'+cx+'" cy="'+cy+'" r="4" fill="'+spoke+'"/><rect x="'+(cx-R*0.75)+'" y="'+(cy+R*0.62)+'" width="5" height="'+(R*0.4+10)+'" fill="#5b6170"/><rect x="'+(cx+R*0.75-5)+'" y="'+(cy+R*0.62)+'" width="5" height="'+(R*0.4+10)+'" fill="#5b6170"/></g>';
+ var ground='<rect x="0" y="'+(cy+R+10)+'" width="200" height="12" fill="'+(free?'#e3c27d':'rgba(0,0,0,.28)')+'"/>'+(free?'<rect x="0" y="'+(cy+R+10)+'" width="200" height="2" fill="#c9a15a"/>':'');
+ var runner='<g transform="translate('+cx+','+(cy+R-3)+')"><g class="'+(free?'rrexit':'')+'">'+rrRunner(st,r,free)+'</g></g>';
+ var lines=!free&&r<.45?'<g stroke="rgba(255,255,255,.75)" stroke-width="1"><line x1="80" y1="'+(cy+R-30)+'" x2="70" y2="'+(cy+R-30)+'"/><line x1="78" y1="'+(cy+R-22)+'" x2="64" y2="'+(cy+R-22)+'"/><line x1="81" y1="'+(cy+R-14)+'" x2="71" y2="'+(cy+R-14)+'"/></g>':'';
+ var svg='<svg class="rrsv" viewBox="0 0 200 120" preserveAspectRatio="xMidYMax meet" aria-hidden="true">'+ground+wheel+lines+runner+'</svg>';
+ var stN=['Terjebak: lari tergesa-gesa & kelelahan, gaji langsung habis','Mulai menyisihkan, napas mulai teratur','Aset pertama memperlambat putaran','Aset bertambah, langkah makin santai','Hampir bebas, roda mulai hijau','Tinggal selangkah lagi keluar'][st];
  var spd=free?'Bebas finansial':r<.2?'Tergesa-gesa & kelelahan':r<.45?'Cepat, mulai teratur':r<.7?'Stabil':r<.95?'Santai':'Hampir keluar';
- return '<div class="ffsc rr'+(free?' free':'')+'" style="background:'+bg+'" role="img" aria-label="'+(free?'Karakter keluar dari lintasan rat race':'Karakter berlari di lintasan rat race yang berputar')+'">'+(free?'<div class="ffsun"></div>':'')+
+ return '<div class="ffsc rr'+(free?' free':'')+'" style="background:'+bg+'" role="img" aria-label="'+(free?'Karakter keluar dari roda rat race':'Karakter berlari di dalam roda rat race')+'">'+(free?'<div class="ffsun"></div>':'')+
   '<div class="ffbn">'+(free?'KELUAR DARI RAT RACE':'MASIH DALAM RAT RACE')+'<small>'+(free?'Bulan ke-'+f.exitM+' ('+Math.floor(f.exitM/12)+' th '+f.exitM%12+' bln)':stN)+'</small></div>'+svg+
-  '<div class="rrit">'+(ic.length?ic.slice(0,8).join(''):'<small>Belum ada aset: putaran masih kencang</small>')+'</div>'+
+  '<div class="rrit">'+(ic.length?ic.slice(0,8).join(''):'<small>Belum ada aset: roda masih kencang</small>')+'</div>'+
   '<div class="rrsp"><b>Kecepatan: '+spd+'</b>Pasif menutup '+Math.round(r*100)+'% pengeluaran'+(free?'':' · 100% = keluar')+'</div></div>'}
 
 </script>
