@@ -813,6 +813,14 @@ function ffScene(f,T){var r=Math.min(1,T.ratio||0),free=!!f.free,st=Math.min(5,M
   '<div class="rrit">'+(ic.length?ic.slice(0,8).join(''):'<small>Belum ada aset: roda masih kencang</small>')+'</div>'+
   '<div class="rrsp"><b>Kecepatan: '+spd+'</b>Pasif menutup '+Math.round(r*100)+'% pengeluaran'+(free?'':' · 100% = keluar')+'</div></div>'}
 
+/* Financial Freedom: rat race langsung tampil tanpa tombol "Mulai game".
+   Game otomatis dibuat dari kondisi awal default / data keuangan; formulir kondisi awal tetap ada (lipat) di bawah. */
+function ffPage(){
+ if(!(S.ff&&S.ff.v)){const D=ffDef(),n=v=>+v||0;S.ff=ffNew(FFU.q,{act:n(D.act),exp:n(D.exp),cash:n(D.cash),pas:n(D.pas)||null,deb:n(D.deb)});try{persist()}catch(e){}}
+ const set=ffSetup().replace(ffRules(),'').replace("<h3 style='margin-top:0'>Financial Freedom · keluar dari rat race</h3>","").replace('>Mulai game<','>Terapkan & mulai dari kondisi ini<');
+ return ffGame(S.ff)+`<details class='card ffset'${FFU.op?' open':''}><summary><b>Ubah kondisi awal</b> <small>(pendapatan, pengeluaran, tabungan, kuadran)</small></summary>${set}</details>`}
+document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('ffset'))FFU.op=e.target.open},true);
+
 </script>
 <script>const TIER='p1';
 
@@ -2800,7 +2808,7 @@ function ffGame(f){const T=ffTot(f),q=ffQuad(f),tot=T.act+T.pas||1,pct=Math.roun
  <div class='card'><b>Gulungan aset: pasif vs pengeluaran</b>${chart}<small>Garis hijau naik melewati garis oranye berarti kamu bebas. Nilai tampil di titik grafik.</small></div>
  <div class='card'><b>Catatan perjalanan</b><ul class='fflog'>${f.log.slice(0,14).map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>
  ${ffRules()}<div class='acts'><button data-act='ffreset'>Mulai ulang dari awal</button></div>`}
-function ffPage(){const f=S.ff;return f&&f.v?ffGame(f):ffSetup()}
+function ffPage_old(){const f=S.ff;return f&&f.v?ffGame(f):ffSetup()}
 function ffEvModal(f){const e=f.ev;if(!e)return;const B=(v,l,pr,dis)=>`<button${pr?" class='pr'":''} data-act='ffev' data-v='${v}'${dis?' disabled':''}>${l}</button>`;
  if(e.id==='doodad')modal(`<h2>Godaan gaya hidup</h2><p><b>${esc(e.n)}</b> seharga ${shortRp(e.c)}. Semua orang di sekitarmu sudah punya.</p><small>Beli = biaya hidup naik permanen sekitar ${shortRp(e.c*.008)} per bulan dan uang itu berhenti bekerja. Tahan diri = uangnya tetap bisa dibelikan aset.</small><div class='acts'>${B('tolak','Tahan diri',1)}${B('cash','Beli tunai',0,f.cash<e.c)}${B('kredit','Beli cicilan 12 bulan (bunga 24%/th)')}</div>`);
  else if(e.id==='medical')modal(`<h2>Biaya darurat</h2><p>Kamu butuh <b>${shortRp(e.c)}</b> untuk biaya kesehatan mendadak.</p><small>Dana darurat yang cukup membuatmu tidak berutang konsumtif.</small><div class='acts'>${B('cash','Bayar dari kas',1,f.cash<e.c)}${B('pinjam','Pinjam (bunga 24%/th)')}</div>`);
