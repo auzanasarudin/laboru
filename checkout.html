@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LABORU — Pilih Paket & Checkout</title>
+<meta name="description" content="Game kantor + 900 template CV + habit & finance tracker. Offline, sekali bayar.">
+<meta property="og:title" content="LABORU Level Up — Pilih paket">
+<meta property="og:image" content="img/og.jpg">
+<meta name="theme-color" content="#13203a">
+<link rel="icon" href="img/icon.png">
+<script src="shared.js"></script>
+<meta name="color-scheme" content="light"><style>
+:root{color-scheme:light}button,input{color:inherit}
+@font-face{font-family:Jakarta;src:url(fonts/jakarta.woff2) format("woff2");font-weight:400 800;font-display:swap}@font-face{font-family:Silk;src:url(fonts/silk400.woff2) format("woff2");font-display:swap}
+:root{--navy:#101a2e;--gold:#f2c53d;--line:#121826;--ok:#1d7a50;--mute:#525b6e}
+*{box-sizing:border-box}body{margin:0;background:#f6f2e7;color:var(--navy);font:16px/1.55 Jakarta,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}img{height:auto}
+.w{max-width:560px;margin:0 auto;padding:16px 16px 120px}
+.hd{display:flex;align-items:center;gap:10px;font:17px Silk,monospace;letter-spacing:1px}.hd img{width:30px;image-rendering:pixelated}
+h1{font:800 28px/1.12 Jakarta,sans-serif;letter-spacing:-.02em;margin:14px 0 8px}.lp{color:var(--mute);margin:0 0 6px}h1 span{color:var(--ok)}
+.shot{border:3px solid #000;border-radius:12px;overflow:hidden;box-shadow:5px 5px 0 var(--line);margin:12px 0}.shot img{display:block;width:100%}
+.ok{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px}.ok span{font-size:13px;font-weight:700;background:#fff;border:2px solid var(--line);border-radius:20px;padding:3px 10px}
+.opt{display:block;position:relative;background:#fff;border-radius:12px;border:2.5px solid var(--line);box-shadow:4px 4px 0 var(--line);padding:14px 14px 14px 48px;margin:12px 0;cursor:pointer}
+.opt input{position:absolute;left:16px;top:18px;width:20px;height:20px;accent-color:var(--navy)}
+.opt.on{background:#fffbe9;outline:3px solid var(--gold)}
+.opt .t{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}.opt b{font-size:16px}.opt .p{font:800 19px Jakarta,sans-serif}.opt .d{display:block;font-size:12.5px;color:var(--ok);font-weight:700;margin-top:2px}
+.opt small{display:block;color:var(--mute);margin-top:4px}.opt s{color:var(--mute);font-size:13px;margin-left:6px}
+.tag{position:absolute;top:-12px;right:12px;background:var(--gold);border:2px solid var(--line);font:12px Silk,monospace;border-radius:6px;padding:3px 8px}
+.ent{display:flex;gap:6px;margin-top:8px}.ent button{flex:1;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--navy);padding:6px;font:700 14px Jakarta,sans-serif;cursor:pointer}.ent button.on{background:var(--navy);color:#fff}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--navy);border-top:3px solid #000;padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+.bar .in{max-width:560px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff}
+.bar small{display:block;color:#cfd6e6;font-size:12px}.bar b{font:800 20px Jakarta,sans-serif}
+.go{border:2.5px solid #000;border-radius:12px;background:var(--gold);color:var(--navy);font:800 17px Jakarta,sans-serif;padding:12px 20px;box-shadow:3px 3px 0 #000;cursor:pointer;white-space:nowrap}
+.go:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #000}
+.fine{font-size:12px;color:var(--mute);margin-top:14px}.fine a{color:inherit}
+</style>
+</head>
+<body>
+<div class="w">
+ <div class="hd"><img src="img/icon.png" alt="">LABORU LEVEL UP</div>
+ <h1>Mau begini terus sampai tua? <span>Mulai naik level.</span></h1><p class="lp">Sistem kerja, kebiasaan & keuangan untuk karyawan — dijalankan seperti game. Seharga ±1 hari gaji, dipakai setahun penuh.</p>
+ <div class="shot"><img src="img/mobile.jpg" alt="Gameplay LABORU di HP" width="960" height="443"></div>
+ <div class="ok"><span>✓ Offline</span><span>✓ Android, iPhone & laptop</span><span>✓ Sekali bayar</span><span>✓ 900 template CV</span></div>
+
+ <form id="f">
+  <label class="opt" data-k="ultimate"><input type="radio" name="p" value="ultimate"><span class="tag">PALING LENGKAP</span>
+   <div class="t"><b>Ultimate</b><span><span class="p" data-price="ultimate">Rp289.000</span><s data-value="ultimate">Rp792.000</s></span></div>
+   <small>Semua isi Core + app PRO, LABO Asisten (Companion), ebook From Zero to Financial Freedom, Company Preparation & Improvement System.</small><span class="d" data-pd="ultimate"></span></label>
+  <label class="opt" data-k="core"><input type="radio" name="p" value="core" checked><span class="tag">PALING DIPILIH</span>
+   <div class="t"><b>Core</b><span><span class="p" data-price="core">Rp189.000</span><s data-value="core">Rp277.000</s></span></div>
+   <small>Aplikasi Level Up + Career + Daily OS, 900 template CV, habit tracker, financial tracker.</small><span class="d" data-pd="core"></span></label>
+  <label class="opt" data-k="entry"><input type="radio" name="p" value="entry">
+   <div class="t"><b>Entry</b><span class="p" data-price="entry_work">Rp79.000</span></div>
+   <small>Satu toolkit Excel/Google Sheets sesuai kebutuhan:</small>
+   <div class="ent" id="ent"><button type="button" class="on" data-e="entry_work">Work</button><button type="button" data-e="entry_habit">Habit</button><button type="button" data-e="entry_finance">Finance</button></div></label>
+ </form>
+ <p class="fine">Produk digital (file & aplikasi), dikirim sesuai instruksi halaman pembayaran. Alat bantu produktivitas & edukasi, bukan nasihat keuangan/psikologis. <a href="index.html">Lihat detail lengkap & demo</a>.</p>
+</div>
+<div class="bar"><div class="in"><div><small id="sn">Core · Personal Life System</small><b id="sp">Rp189.000</b></div><button class="go" id="go">Checkout →</button></div></div>
+<script>
+let ent='entry_work';
+const key=()=>{const v=document.querySelector('input[name=p]:checked').value;return v==='entry'?ent:v};
+function upd(){const k=key(),p=LABORU_PRODUCTS[k];document.getElementById('sn').textContent=p.n;document.getElementById('sp').textContent=LABORU_rp(p.p);document.querySelectorAll('.opt').forEach(o=>o.classList.toggle('on',o.querySelector('input').checked))}
+document.getElementById('f').addEventListener('change',upd);
+document.getElementById('ent').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ent=b.dataset.e;document.querySelectorAll('#ent button').forEach(x=>x.classList.toggle('on',x===b));document.querySelector('input[value=entry]').checked=true;upd()});
+document.getElementById('go').addEventListener('click',()=>LABORU_buy(key(),'short-lp'));
+/* ?p=core / ultimate / entry_work ... memilih paket otomatis; &go=1 langsung ke checkout (untuk link iklan) */
+const q=new URLSearchParams(location.search),pp=q.get('p');
+if(pp){if(/^entry_/.test(pp)){ent=pp;document.querySelector('input[value=entry]').checked=true;document.querySelectorAll('#ent button').forEach(x=>x.classList.toggle('on',x.dataset.e===pp))}else{const r=document.querySelector('input[value="'+pp+'"]');if(r)r.checked=true}}
+const pd=()=>document.querySelectorAll('[data-pd]').forEach(el=>el.textContent='≈ '+LABORU_rp(Math.round(LABORU_PRODUCTS[el.dataset.pd].p/365))+'/hari selama setahun');
+pd();document.addEventListener('laboru:prices',()=>{pd();upd()});
+upd();
+LABORU_track('ViewContent',{content_ids:[key()],content_type:'product',content_name:LABORU_PRODUCTS[key()].n,value:LABORU_PRODUCTS[key()].p,currency:'IDR'});
+if(q.get('go')==='1')setTimeout(()=>LABORU_buy(key(),'short-lp-auto'),400);
+</script>
+</body>
+</html>

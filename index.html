@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LABORU Level Up — Keluar dari Lingkaran Kerja–Gajian–Habis</title>
+<meta name="description" content="Sistem naik level untuk karyawan: kerja lebih terarah, kebiasaan lebih kuat, uang mulai bekerja. Aplikasi game pixel + 900 template CV + habit & finance tracker + ebook. Offline di Android, iPhone, laptop. Sekali bayar.">
+<meta property="og:title" content="Kerja. Gajian. Habis. Ulang. Mau sampai kapan?">
+<meta property="og:description" content="LABORU: sistem naik level untuk karyawan — dimainkan seperti game. Seharga ±1 hari gaji, dipakai setahun penuh.">
+<meta property="og:image" content="img/og.jpg">
+<meta name="theme-color" content="#101a2e">
+<link rel="icon" href="img/icon.png">
+<link rel="preload" href="fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin>
+<script src="shared.js"></script>
+<meta name="color-scheme" content="light"><style>
+:root{color-scheme:light}button,input{color:inherit}
+@font-face{font-family:"Jakarta";src:url(fonts/jakarta.woff2) format("woff2");font-weight:400 800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Jakarta";src:url(fonts/jakarta-ext.woff2) format("woff2");font-weight:400 800;font-display:swap;unicode-range:U+0100-02AF,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Silk";src:url(fonts/silk400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Silk";src:url(fonts/silk700.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{--navy:#101a2e;--navy2:#18253f;--ink:#121826;--paper:#f7f3ea;--paper2:#efe7d6;--card:#fff;--line:#121826;--mute:#525b6e;--green:#3fbf7f;--green2:#a6e3a1;--gold:#f2c53d;--red:#e0525a;
+ --fb:"Jakarta",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--fp:"Silk",ui-monospace,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16.5px/1.65 var(--fb);overflow-x:hidden}
+a{color:inherit}img{max-width:100%;height:auto;display:block}b,strong{font-weight:700}
+.wrap{max-width:1140px;margin:0 auto;padding:0 18px}
+.px{border:2.5px solid var(--line);box-shadow:5px 5px 0 var(--line);background:var(--card);border-radius:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 24px;border:2.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:700 16px var(--fb);text-decoration:none;box-shadow:4px 4px 0 var(--line);cursor:pointer;transition:transform .08s,box-shadow .08s}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--line)}.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--line)}
+.btn.go{background:var(--gold)}.btn.green{background:var(--green);color:#fff}.btn.dark{background:var(--navy);color:#fff}
+.k{display:inline-block;font:400 14px var(--fp);letter-spacing:1px;text-transform:uppercase;color:#1d7a50}
+h1,h2,h3{margin:0;font-family:var(--fb);font-weight:800;letter-spacing:-.02em;line-height:1.12}
+h2{font-size:clamp(28px,4.2vw,44px);margin:10px 0 16px}h2 em{font-style:normal;color:#1d7a50}
+.lead{font-size:clamp(17px,2vw,19px);color:var(--mute);max-width:720px}
+section{padding:72px 0}
+/* top */
+.top{position:sticky;top:0;z-index:30;background:rgba(16,26,46,.96);backdrop-filter:blur(6px);color:#fff;border-bottom:2px solid #000}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:10px}
+.logo{display:flex;align-items:center;gap:10px;font:400 20px var(--fp);letter-spacing:1px;text-decoration:none;color:#fff}.logo img{width:34px;image-rendering:pixelated}
+.top nav{display:flex;gap:22px;font-weight:600;font-size:15px}.top nav a{text-decoration:none;opacity:.85}.top nav a:hover{opacity:1}
+.top .btn{min-height:42px;padding:6px 16px;font-size:14.5px;box-shadow:3px 3px 0 #000;border-color:#000}
+@media(max-width:860px){.top nav{display:none}}
+/* hero */
+.hero{background:var(--navy);color:#fff;padding:64px 0 80px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 85% 10%,rgba(63,191,127,.22),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(242,197,61,.12),transparent 50%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.08fr 1fr;gap:44px;align-items:center}
+.loopline{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.loopline span{font:400 15px var(--fp);letter-spacing:1px;padding:7px 11px;border:2px solid #34446a;border-radius:8px;color:#c9d3e8;background:#16223b;opacity:0;animation:pop .5s forwards}
+.loopline span.r{border-color:var(--red);color:#ffb3b7}
+.loopline i{font-style:normal;color:#5c6d93;align-self:center;opacity:0;animation:pop .5s forwards}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(36px,5.6vw,62px);line-height:1.04}.hero h1 span{color:var(--green2);display:block}
+.hero .lead{color:#c3cde0;margin:20px 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn{border-color:#000;box-shadow:4px 4px 0 #000}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;color:#aeb9cf;font-size:14.5px;font-weight:600}.trust span:before{content:"✓ ";color:var(--green2)}
+.shot{border:3px solid #000;border-radius:14px;overflow:hidden;box-shadow:8px 8px 0 #000;background:#000}
+.stack{position:relative}.stack .s2{position:absolute;right:-14px;bottom:-40px;width:44%;transform:rotate(4deg)}
+.stack .tag{position:absolute;left:-12px;top:-14px;background:var(--gold);color:var(--ink);font:400 14px var(--fp);padding:7px 10px;border:2px solid #000;border-radius:8px;transform:rotate(-3deg)}
+@media(max-width:860px){.hero{padding:40px 0 56px}.hero .wrap{grid-template-columns:1fr;gap:34px}.stack .s2{width:40%;right:-4px;bottom:-26px}}
+/* 30 years */
+.years{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.tl{position:relative;padding:22px}.tl .row{display:grid;grid-template-columns:70px 1fr;gap:12px;align-items:center;padding:9px 0;border-bottom:1px dashed #d4cbb7}.tl .row:last-child{border:0}
+.tl .age{font:700 16px var(--fp);color:#1d7a50}.tl .bar{height:12px;border-radius:6px;background:repeating-linear-gradient(90deg,#d8cfbd 0 16px,#cfc4ad 16px 18px)}
+.tl small{display:block;color:var(--mute);font-size:13.5px;margin-top:4px}
+.bign{font:800 clamp(54px,8vw,92px)/1 var(--fb);letter-spacing:-.04em;color:var(--ink)}.bign small{font-size:.3em;letter-spacing:0;color:var(--mute);font-weight:600;display:block;margin-top:6px}
+.qs{display:grid;gap:10px;margin-top:20px}.qs div{background:#fff;border-left:5px solid var(--red);padding:12px 16px;border-radius:0 10px 10px 0;font-weight:600}
+@media(max-width:860px){.years{grid-template-columns:1fr}}
+/* compare */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+.vs .px{padding:22px}.vs h3{font-size:21px;margin-bottom:12px;display:flex;align-items:center;gap:10px}.vs ul{margin:0;padding:0;list-style:none}.vs li{padding:8px 0 8px 30px;position:relative;border-bottom:1px solid #eee}.vs li:last-child{border:0}
+.vs .no li:before{content:"✕";position:absolute;left:4px;color:var(--red);font-weight:800}.vs .yes{background:#f0fbf3}.vs .yes li:before{content:"✓";position:absolute;left:4px;color:#1d7a50;font-weight:800}
+@media(max-width:760px){.vs{grid-template-columns:1fr}}
+/* enemies */
+.dg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.db{padding:18px}.db b{display:block;font:400 17px var(--fp);letter-spacing:.5px;color:var(--red);margin-bottom:6px}.db p{margin:0;color:var(--mute);font-size:15px}.db i{display:block;font-style:normal;color:#1d7a50;font-weight:700;margin-top:10px;font-size:15px}
+@media(max-width:900px){.dg{grid-template-columns:1fr 1fr}}@media(max-width:520px){.dg{grid-template-columns:1fr}}
+/* demo */
+.demo{background:var(--navy);color:#fff}.demo .k{color:var(--gold)}.demo .lead{color:#c3cde0}
+.frame{border:3px solid #000;border-radius:14px;overflow:hidden;box-shadow:8px 8px 0 #000;background:#0b0a12;position:relative;aspect-ratio:16/9;max-height:78vh;width:100%}
+.frame iframe{width:100%;height:100%;border:0;display:block}
+.frame .cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(rgba(11,10,18,.45),rgba(11,10,18,.85)),url(img/lobby.jpg) center/cover;text-align:center;padding:16px}
+.frame .cover b{font:400 24px var(--fp);letter-spacing:1px}
+.rules{display:flex;flex-wrap:wrap;gap:8px 18px;margin:16px 0;font-size:14.5px;color:#c3cde0}.rules span:before{content:"▸ ";color:var(--gold)}
+.dbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;font-size:14.5px;flex-wrap:wrap}
+@media(max-width:800px){.frame{aspect-ratio:auto;height:72vh}}
+/* pillars */
+.pil{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pi{overflow:hidden}.pi img{aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:2.5px solid var(--line)}.pi div{padding:18px}.pi h3{font-size:20px;margin:6px 0 8px}.pi p{margin:0;color:var(--mute);font-size:15px}
+.pi .k{font-size:12px}
+@media(max-width:900px){.pil{grid-template-columns:1fr}}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.gi{overflow:hidden}.gi img{aspect-ratio:16/10;object-fit:cover;object-position:top}.gi p{margin:0;padding:10px 12px;font-size:14px;font-weight:600;border-top:2.5px solid var(--line)}
+@media(max-width:900px){.gal{grid-template-columns:1fr 1fr}}
+/* price anchor */
+.anchor{background:var(--paper2);border-top:2.5px solid var(--line);border-bottom:2.5px solid var(--line)}
+.calc{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:center}
+.calc .box{padding:24px}.calc label{display:block;font-weight:700;margin-bottom:8px}
+.calc input{width:100%;font:800 26px var(--fb);padding:12px 14px;border:2.5px solid var(--line);border-radius:10px;background:#fffdf7}
+.calc .out{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.calc .out div{background:var(--navy);color:#fff;border-radius:10px;padding:14px}.calc .out b{display:block;font:800 26px var(--fb);color:var(--green2)}.calc .out small{color:#aeb9cf;font-size:13px}
+.daycost{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.daycost span{background:#fff;border:2px solid var(--line);border-radius:30px;padding:6px 12px;font-size:14px;font-weight:600}
+@media(max-width:860px){.calc{grid-template-columns:1fr}}
+/* packages */
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;margin-top:34px}
+.pack{display:flex;flex-direction:column;gap:12px;padding:24px;position:relative}
+.pack.hl{background:#fffbea;transform:translateY(-10px);box-shadow:7px 7px 0 var(--line)}.pack .rib{position:absolute;top:-15px;left:18px;background:var(--gold);border:2.5px solid var(--line);border-radius:8px;font:400 13px var(--fp);letter-spacing:.5px;padding:4px 10px}
+.pack h3{font:400 24px var(--fp);letter-spacing:1px}.pack .sub{color:var(--mute);font-size:15px;margin:-6px 0 0}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.price b{font:800 34px var(--fb);letter-spacing:-.03em}.price s{color:var(--mute)}.price em{font-style:normal;font-weight:800;color:#1d7a50;font-size:13.5px;background:#e3f6e9;padding:2px 8px;border-radius:20px}
+.perday{font-size:13.5px;color:var(--mute);margin-top:-6px}
+.pack ul{margin:0;padding-left:20px;font-size:15px}.pack li{margin:5px 0}.pack .btn{margin-top:auto}
+.seg{display:flex;gap:6px}.seg button{flex:1;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);padding:8px;font:700 14px var(--fb);cursor:pointer}.seg button.on{background:var(--navy);color:#fff}
+@media(max-width:900px){.pk{grid-template-columns:1fr}.pack.hl{transform:none}}
+table.cmp{width:100%;border-collapse:collapse;background:#fff;font-size:15px}table.cmp th{background:var(--navy);color:#fff;padding:12px;text-align:left;font-weight:700}table.cmp td{padding:10px 12px;border-bottom:1px solid #e6e0d2}table.cmp td.c{text-align:center;font-weight:800;width:96px}
+.tw{overflow-x:auto;border:2.5px solid var(--line);border-radius:12px;box-shadow:5px 5px 0 var(--line);margin-top:28px}
+/* eceran */
+.fx{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:8px}
+.fi{overflow:hidden;display:flex;flex-direction:column}.fi img{aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:2.5px solid var(--line)}.fi div{padding:14px 16px}.fi h3{font-size:18px;margin:0 0 6px}.fi p{margin:0;color:var(--mute);font-size:14.5px}.fi .tg{display:inline-block;font:400 12px var(--fp);letter-spacing:.5px;background:var(--gold);border:2px solid var(--line);border-radius:6px;padding:1px 7px;margin-bottom:6px}.fi .tg.u{background:var(--green2)}
+.pv{border:2.5px solid var(--line);border-radius:10px;overflow:hidden;background:#f3eee3}.pv img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.fl{font-size:13.5px;color:var(--mute);margin:-4px 0 0;line-height:1.5}.fl b{color:var(--ink)}
+.ei .pv{margin:-16px -16px 6px;border:0;border-bottom:2.5px solid var(--line);border-radius:12px 12px 0 0}
+.ei details{border:0;box-shadow:none;margin:4px 0 0;background:transparent}.ei summary{padding:4px 0;font-size:14px;color:#1d7a50}.ei details ul{margin:0;padding:0 0 4px 18px;font-size:13.5px;color:var(--mute)}
+.ec{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.ei{display:flex;flex-direction:column;gap:6px;padding:16px}.ei b{font-size:16px}.ei small{color:var(--mute);font-size:14px}.ei .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;gap:8px}.ei .row b{font:800 19px var(--fb)}.ei .btn{min-height:40px;padding:6px 16px;font-size:14px}
+.ei.new{background:#f0fbf3}.ei .nb{align-self:flex-start;font:400 12px var(--fp);background:var(--green);color:#fff;border-radius:6px;padding:2px 8px;letter-spacing:1px}
+/* ebook */
+.eb{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:center}.eb .covers{position:relative;height:430px}.eb .covers img{position:absolute;width:62%;border:2.5px solid #000;border-radius:6px;box-shadow:8px 8px 0 #000}.eb .covers img:nth-child(2){right:0;top:60px;transform:rotate(4deg)}
+@media(max-width:860px){.eb{grid-template-columns:1fr}.eb .covers{height:360px}}
+/* steps faq */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.steps div{padding:20px}.steps b{font:400 16px var(--fp);letter-spacing:1px;display:block;margin-bottom:6px;color:#1d7a50}
+@media(max-width:800px){.steps{grid-template-columns:1fr}}
+details{border:2.5px solid var(--line);border-radius:12px;background:#fff;margin:12px 0;box-shadow:4px 4px 0 var(--line)}summary{cursor:pointer;padding:16px 18px;font-weight:700;font-size:16.5px}details p{margin:0;padding:0 18px 16px;color:var(--mute)}
+.final{background:var(--navy);color:#fff;text-align:center}.final h2{color:#fff}.final .lead{color:#c3cde0;margin:0 auto 26px}.final .btn{border-color:#000;box-shadow:4px 4px 0 #000}
+footer{background:#0a1120;color:#aeb9cf;font-size:13.5px;padding:28px 0 96px}footer a{color:#fff}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--navy);border-top:2px solid #000;padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:none;align-items:center;justify-content:space-between;gap:10px;color:#fff;font-size:14.5px}
+.sticky .btn{min-height:44px;padding:6px 16px;border-color:#000;box-shadow:3px 3px 0 #000}
+@media(max-width:800px){.sticky{display:flex}section{padding:56px 0}}
+.modal{position:fixed;inset:0;background:rgba(10,12,24,.7);display:none;align-items:center;justify-content:center;z-index:60;padding:16px}.modal.on{display:flex}.modal .box{max-width:440px;padding:24px;text-align:center}.modal h3{font-size:20px;margin-bottom:8px}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.loopline span,.loopline i{animation:none;opacity:1}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="#"><img src="img/icon.png" alt="">LABORU</a><nav><a href="#loop">Kenapa</a><a href="#demo">Demo</a><a href="#paket">Paket</a><a href="#faq">FAQ</a></nav><a class="btn go" href="#paket">Lihat Paket</a></div></header>
+
+<section class="hero"><div class="wrap">
+ <div>
+  <div class="loopline" aria-label="Senin, kerja, gajian, tagihan, habis, ulang"><span style="animation-delay:.05s">SENIN</span><i style="animation-delay:.15s">→</i><span style="animation-delay:.25s">KERJA</span><i style="animation-delay:.35s">→</i><span style="animation-delay:.45s">GAJIAN</span><i style="animation-delay:.55s">→</i><span style="animation-delay:.65s">TAGIHAN</span><i style="animation-delay:.75s">→</i><span class="r" style="animation-delay:.85s">HABIS</span><i style="animation-delay:.95s">↺</i></div>
+  <h1>Apakah hidup akan seperti ini terus sampai tua? <span>Kelola hidupmu step by step mulai sekarang.</span></h1>
+  <p class="lead">Dengan sistem game kamu akan lebih <b style="color:#fff">enjoy dan menyenangkan</b> menyusun step by step kehidupan ini. Semangaatttt! 🎮</p>
+  <div class="cta"><a class="btn go" href="#paket" id="ctaPaket">Mulai naik level</a><a class="btn" href="#demo" id="ctaDemo">▶ Coba demo gratis</a></div>
+  <div class="trust"><span>Offline</span><span>Android, iPhone & laptop</span><span>Sekali bayar</span><span>Seharga ±1 hari gaji</span></div>
+ </div>
+ <div class="stack"><div class="tag">PLAY YOUR LIFE</div><div class="shot"><img src="img/lobby.jpg" alt="Kantor virtual LABORU Level Up" width="1280" height="720"></div><div class="shot s2"><img src="img/combat.jpg" alt="Dungeon kebiasaan buruk" loading="lazy"></div></div>
+</div></section>
+
+<section id="loop"><div class="wrap">
+ <div class="years">
+  <div class="reveal">
+   <div class="k">Hitungan yang jarang dihitung</div>
+   <h2>Umur 25 sampai 55 = <em>360 kali gajian</em>.</h2>
+   <p class="lead">Setiap gajian adalah kesempatan untuk naik satu level — atau mengulang bulan yang sama. Kebanyakan orang tidak gagal karena kurang kerja keras. Mereka hanya <b>tidak punya sistem</b>, jadi bulan ke-360 terasa sama dengan bulan pertama.</p>
+   <div class="qs"><div>Gaji naik, tapi sisa akhir bulan tetap tipis?</div><div>Sibuk setiap hari, tapi karier terasa di tempat?</div><div>Ingin mulai investasi/usaha, tapi tidak tahu dari mana?</div></div>
+  </div>
+  <div class="px tl reveal">
+   <div class="bign">360<small>gajian dalam 30 tahun kerja</small></div>
+   <div class="row" style="margin-top:14px"><span class="age">25</span><div><div class="bar" style="width:22%"></div><small>Gaji pertama. "Nanti saja mulai nabung."</small></div></div>
+   <div class="row"><span class="age">30</span><div><div class="bar" style="width:40%"></div><small>Cicilan bertambah, waktu makin sempit.</small></div></div>
+   <div class="row"><span class="age">40</span><div><div class="bar" style="width:66%"></div><small>Tanggungan bertambah, energi berkurang.</small></div></div>
+   <div class="row"><span class="age">55</span><div><div class="bar" style="width:100%;background:repeating-linear-gradient(90deg,#e0525a 0 16px,#c9434b 16px 18px)"></div><small>Pensiun. Asetnya cukup — atau tidak?</small></div></div>
+  </div>
+ </div>
+ <div class="vs" style="margin-top:44px">
+  <div class="px no reveal"><h3>😮‍💨 Tanpa sistem</h3><ul><li>Tugas menumpuk, prioritas ditentukan siapa yang paling keras menagih</li><li>Uang habis tanpa jejak, tabungan "kalau ada sisa"</li><li>Resolusi mati di minggu kedua</li><li>CV & bukti kerja tidak pernah siap saat peluang datang</li></ul></div>
+  <div class="px yes reveal"><h3>🎮 Dengan LABORU</h3><ul><li>Tugas jadi <b>quest</b> berprioritas, setiap selesai dapat <b>XP</b></li><li>Budget 50/30/20, dana darurat & rencana lunas utang</li><li>Habit tracker + kebiasaan buruk jadi <b>musuh di dungeon</b></li><li>900 template CV/surat + jejak KPI otomatis</li></ul></div>
+ </div>
+</div></section>
+
+<section style="padding-top:10px"><div class="wrap">
+ <div class="k">Kenali musuhnya</div>
+ <h2>Musuh terbesar bukan atasan atau rekan kerja. <em>Musuhnya kebiasaan.</em></h2>
+ <div class="dg">
+  <div class="db px reveal"><b>MALAS</b><p>Langkah pertama terasa terlalu besar.</p><i>→ Quest kecil + XP tiap selesai</i></div>
+  <div class="db px reveal"><b>SI PENUNDA</b><p>"Nanti aja…" sampai deadline.</p><i>→ Fokus 25 menit + pengingat</i></div>
+  <div class="db px reveal"><b>BOROS & GENGSI</b><p>Uang habis tanpa jejak.</p><i>→ Budget 50/30/20 + debt planner</i></div>
+  <div class="db px reveal"><b>INSECURE</b><p>Kerja keras tidak terlihat.</p><i>→ Jejak KPI, timeline, CV siap</i></div>
+ </div>
+</div></section>
+
+<section class="demo" id="demo"><div class="wrap">
+ <div class="k">Arena demo</div>
+ <h2 style="color:#fff">Main langsung. Ini aplikasinya, bukan video.</h2>
+ <p class="lead">Jelajahi kantor pixel, buka Papan Quest, lalu masuk LIFT ke dungeon. Versi demo memakai data contoh.</p>
+ <div class="rules"><span>Semua input terbuka</span><span>Ekspor & unduh terkunci</span><span>Preview dokumen ber-watermark</span><span>Data demo direset tiap 10 menit</span></div>
+ <div class="frame" id="frame"><div class="cover"><b>LABORU LEVEL UP · DEMO</b><span>Desktop: WASD + mouse · HP: joystick layar</span><button class="btn go" id="startDemo">▶ Mulai main demo</button></div></div>
+ <div class="dbar"><span id="dTimer">Demo belum dimulai</span><a class="btn go" href="#paket" style="min-height:44px">Ambil versi penuh</a></div>
+</div></section>
+
+<section style="background:var(--paper2);border-top:2.5px solid var(--line);border-bottom:2.5px solid var(--line)"><div class="wrap">
+ <div class="k">Isi aplikasinya</div>
+ <h2>11 alat yang bekerja <em>untukmu setiap hari</em></h2>
+ <div class="fx"><div class="fi px reveal"><img src="img/ft/gen.jpg" alt="Generator CV & portofolio otomatis" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Generator CV & portofolio otomatis</h3><p>Isi profil sekali, CV & portofolio siap PDF — tanpa desain ulang.</p></div></div><div class="fi px reveal"><img src="img/ft/surat.jpg" alt="Generator email & cover letter" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Generator email & cover letter</h3><p>Pilih jenis & gaya surat, isi tersusun otomatis dari profilmu.</p></div></div><div class="fi px reveal"><img src="img/ft/timeline.jpg" alt="Timeline bar proyek" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Timeline bar proyek</h3><p>Rencana vs realisasi tiap proyek dalam bar waktu yang jelas.</p></div></div><div class="fi px reveal"><img src="img/ft/intv.jpg" alt="Interview simulator" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Interview simulator</h3><p>Latihan wawancara metode STAR, Labo memberi skor & saran.</p></div></div><div class="fi px reveal"><img src="img/ft/karier.jpg" alt="Jenjang karier & karakter naik level" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Jenjang karier & karakter naik level</h3><p>Skill naik dari quest; karakter & pakaiannya ikut berubah.</p></div></div><div class="fi px reveal"><img src="img/ft/grafik.jpg" alt="Grafik progres" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Grafik progres</h3><p>Radar skill, tren quest & energi otomatis dari aktivitasmu.</p></div></div><div class="fi px reveal"><img src="img/ft/habit.jpg" alt="Habit tracker" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Habit tracker</h3><p>Centang kebiasaan harian, lihat progres bulanan sekali pandang.</p></div></div><div class="fi px reveal"><img src="img/ft/mental.jpg" alt="Asisten mental (Labo)" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Asisten mental (Labo)</h3><p>Check-in mood, refleksi harian, dan saran kecil yang realistis.</p></div></div><div class="fi px reveal"><img src="img/ft/uang.jpg" alt="Tracker keuangan harian" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Tracker keuangan harian</h3><p>Catat pemasukan & pengeluaran, grafik arus kas langsung jadi.</p></div></div><div class="fi px reveal"><img src="img/ft/pet.jpg" alt="Peliharaan Labo" loading="lazy"><div><span class="tg">CORE & ULTIMATE</span><h3>Peliharaan Labo</h3><p>Rawat Labo; ia ikut bersemangat saat kebiasaanmu terjaga.</p></div></div><div class="fi px reveal"><img src="img/ft/ratrace.jpg" alt="Game rat race Financial Freedom" loading="lazy"><div><span class="tg u">ULTIMATE</span><h3>Game rat race Financial Freedom</h3><p>Lari di lintasan melingkar: makin banyak aset, putaran melambat sampai kamu keluar.</p></div></div></div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="k">Tiga jalur naik level</div>
+ <h2>Kerja. Kebiasaan. Keuangan. <em>Dalam satu sistem.</em></h2>
+ <div class="pil">
+  <div class="pi px reveal"><img src="img/quest.jpg" alt="" loading="lazy"><div><span class="k">01 · Kerja & karier</span><h3>Dari sibuk jadi terlihat</h3><p>Quest, tim, jadwal, KPI, laporan otomatis, tangga karier, dan 900 template CV ATS/cover letter (ID & EN).</p></div></div>
+  <div class="pi px reveal"><img src="img/weekly.jpg" alt="" loading="lazy"><div><span class="k">02 · Kebiasaan</span><h3>Dari niat jadi rutinitas</h3><p>Weekly To-Do, habit builder 10×31, tantangan harian, dan dungeon tempat kebiasaan buruk dikalahkan.</p></div></div>
+  <div class="pi px reveal"><img src="img/budget.jpg" alt="" loading="lazy"><div><span class="k">03 · Keuangan</span><h3>Dari habis jadi bertumbuh</h3><p>Budget 50/30/20, pelunasan utang snowball/avalanche, Wealth Builder 17 sheet, dan peta Financial Freedom.</p></div></div>
+ </div>
+ <div class="gal">
+  <div class="gi px"><img src="img/team.jpg" alt="" loading="lazy"><p>Ruang tim bersekat</p></div>
+  <div class="gi px"><img src="img/boss.jpg" alt="" loading="lazy"><p>5 dunia, 5 boss kebiasaan</p></div>
+  <div class="gi px"><img src="img/ff.jpg" alt="" loading="lazy"><p>Game Financial Freedom</p></div>
+  <div class="gi px"><img src="img/hub.jpg" alt="" loading="lazy"><p>Company System Hub</p></div>
+ </div>
+</div></section>
+
+<section class="anchor"><div class="wrap">
+ <div class="calc">
+  <div class="reveal">
+   <div class="k">Harga yang masuk akal</div>
+   <h2>Seharga <em>±1 hari gaji</em>. Dipakai <em>365 hari</em>.</h2>
+   <p class="lead">Satu hari kerja untuk sistem yang menemani setiap hari kerja berikutnya — tanpa biaya bulanan, tanpa langganan.</p>
+   <div class="daycost"><span>Core ≈ <b id="pdCore">Rp518</b>/hari</span><span>Ultimate ≈ <b id="pdUlt">Rp792</b>/hari</span><span>dihitung untuk 1 tahun pemakaian</span></div>
+  </div>
+  <div class="px box reveal">
+   <label for="sal">Gaji bulananmu (perkiraan)</label>
+   <input id="sal" inputmode="numeric" value="5.000.000" aria-label="Gaji bulanan">
+   <div class="out"><div><small>Gaji per hari kerja</small><b id="oDay">Rp227.273</b></div><div><small>Core setara</small><b id="oCore">0,8 hari</b></div><div><small>Ultimate setara</small><b id="oUlt">1,3 hari</b></div><div><small>Entry setara</small><b id="oEnt">0,3 hari</b></div></div>
+   <p style="font-size:12.5px;color:var(--mute);margin:12px 0 0">Asumsi 22 hari kerja per bulan. Angka dihitung di perangkatmu, tidak disimpan.</p>
+  </div>
+ </div>
+</div></section>
+
+<section id="paket"><div class="wrap">
+ <div class="k">Pilih paketmu</div>
+ <h2>Sekali bayar, <em>milikmu selamanya</em>.</h2>
+ <div class="pk">
+  <div class="pack px">
+   <div class="pv"><img id="entryPv" src="img/pv/ENTRY_Work-Toolkit.jpg" alt="Preview Entry" loading="lazy"></div><h3>ENTRY</h3><p class="sub">Mulai dari satu kebutuhan</p>
+   <div class="seg" id="entrySeg"><button class="on" data-e="entry_work">Work</button><button data-e="entry_habit">Habit</button><button data-e="entry_finance">Finance</button></div>
+   <div class="price"><b data-price="entry_work">Rp79.000</b></div>
+   <ul id="entryList"></ul>
+   <button class="btn" id="entryBuy" data-buy="entry_work" data-src="main">Pilih Entry</button>
+  </div>
+  <div class="pack px hl">
+   <div class="rib">PALING DIPILIH KARYAWAN</div>
+   <div class="pv"><img src="img/pv/CORE_Personal-Life-System.jpg" alt="Preview Core" loading="lazy"></div><h3>CORE</h3><p class="sub">Personal Life System</p>
+   <div class="price"><b data-price="core">Rp189.000</b><s data-value="core">Rp277.000</s><em data-save="core">hemat 32%</em></div>
+   <div class="perday">≈ Rp518/hari selama setahun</div>
+   <ul>
+    <li><b>Game eksklusif LABORU Level Up</b> (tidak dijual satuan) + Career + Daily OS — Android, iPhone, Windows, macOS</li>
+    <li><b>Work Preparation</b>: 900 template CV ATS, CV kreatif, cover letter, email, portfolio</li>
+    <li><b>Habit Tracker</b> (Excel + Google Sheets)</li>
+    <li><b>Financial Upgrade</b>: Wealth Builder 17 sheet</li>
+    <li>Bonus AI Prompt Library</li>
+   </ul>
+   <p class="fl"><b>Fitur di aplikasi:</b> generator CV, portofolio, email & cover letter otomatis · timeline bar proyek · interview simulator · jenjang karier + karakter naik level · grafik progres · habit tracker · asisten mental · tracker keuangan harian · peliharaan Labo</p>
+   <button class="btn go" data-buy="core" data-src="main">Ambil Core</button>
+  </div>
+  <div class="pack px">
+   <div class="rib" style="background:#fff">PALING LENGKAP</div>
+   <div class="pv"><img src="img/pv/ULTIMATE_Life-Business-System.jpg" alt="Preview Ultimate" loading="lazy"></div><h3>ULTIMATE</h3><p class="sub">Life & Business System</p>
+   <div class="price"><b data-price="ultimate">Rp289.000</b><s data-value="ultimate">Rp792.000</s><em data-save="ultimate">hemat 64%</em></div>
+   <div class="perday">≈ Rp792/hari selama setahun</div>
+   <ul>
+    <li><b>Semua isi Core</b> + aplikasi <b>PRO</b>: Financial Freedom, Weekly To-Do, Budget 50/30/20, Ruang Investasi</li>
+    <li><b>LABO Asisten (Companion)</b>: peliharaan virtual interaktif</li>
+    <li><b>Ebook From Zero to Financial Freedom</b> Vol. 1 + Level Up Diri</li>
+    <li><b>Company Preparation System</b>: hub + 390+ dokumen</li>
+    <li><b>Company Improvement System</b> + roadmap 90 hari</li>
+   </ul>
+   <p class="fl"><b>Tambahan versi PRO:</b> game rat race Financial Freedom (lari di lintasan melingkar sampai bebas finansial) · Weekly To-Do · Task Manager · Budget 50/30/20 + debt payoff · Ruang Investasi</p>
+   <button class="btn dark" data-buy="ultimate" data-src="main">Ambil Ultimate</button>
+  </div>
+ </div>
+ <p style="font-size:13.5px;color:var(--mute);margin-top:20px">Game LABORU Level Up eksklusif untuk pemilik Core & Ultimate dan tidak dijual satuan. Harga coret = total harga isi paket lain yang dijual eceran.</p>
+ <div class="tw"><table class="cmp">
+  <tr><th>Fitur</th><th style="text-align:center">Entry</th><th style="text-align:center">Core</th><th style="text-align:center;background:var(--gold);color:var(--ink)">Ultimate</th></tr>
+  <tr><td>Satu toolkit Excel/Sheets (Work / Habit / Finance)</td><td class="c">✓</td><td class="c">✓</td><td class="c">✓</td></tr>
+  <tr><td>Ketiga toolkit sekaligus</td><td class="c">–</td><td class="c">✓</td><td class="c">✓</td></tr>
+  <tr><td>Game eksklusif LABORU Level Up (hanya di paket)</td><td class="c">–</td><td class="c">✓</td><td class="c">PRO</td></tr>
+  <tr><td>Aplikasi Career & Daily OS · Android, iPhone, laptop</td><td class="c">–</td><td class="c">✓</td><td class="c">✓</td></tr>
+  <tr><td>900 template Word karier</td><td class="c">Work: 360</td><td class="c">✓</td><td class="c">✓</td></tr>
+  <tr><td>LABO Asisten (Companion) + 2 Ebook</td><td class="c">–</td><td class="c">–</td><td class="c">✓</td></tr>
+  <tr><td>Company Preparation & Improvement System</td><td class="c">–</td><td class="c">–</td><td class="c">✓</td></tr>
+ </table></div>
+</div></section>
+
+<section style="background:var(--paper2);border-top:2.5px solid var(--line);border-bottom:2.5px solid var(--line)"><div class="wrap eb">
+ <div class="covers reveal"><img src="img/ebook.jpg" alt="Sampul ebook From Zero to Financial Freedom"><img src="img/ebook_map.jpg" alt="Halaman Wealth Evolution Map"></div>
+ <div class="reveal">
+  <div class="k">Baru · Ebook pixel-art</div>
+  <h2>From Zero to <em>Financial Freedom</em></h2>
+  <p class="lead">Ensiklopedia 500 halaman yang diterbitkan bertahap. Volume 1 membahas realitas hidup & uang dan jebakan finansial yang tidak terlihat — dengan simulasi angka, decision room, dan workbook.</p>
+  <ul style="padding-left:20px;margin:0 0 20px"><li>61 halaman, ilustrasi pixel art, siap dibaca di HP atau dicetak</li><li>Master Page Blueprint 500 halaman (PDF + Excel)</li><li>Volume berikutnya dikirim gratis ke pembeli</li></ul>
+  <div class="cta"><button class="btn green" data-buy="r09" data-src="ebook">Beli ebook · <span data-price="r09">Rp49.000</span></button><a class="btn" href="#paket">Gratis di Ultimate</a></div>
+ </div>
+</div></section>
+
+<section id="eceran"><div class="wrap">
+ <div class="k">Eceran</div>
+ <h2>Butuh satu item saja? <em>Beli satuan.</em></h2>
+ <div class="ec" id="ecList"></div>
+ <p style="font-size:14.5px;color:var(--mute);margin-top:16px">Sudah punya Core? Upgrade ke Ultimate cukup <b data-price="upgrade">Rp99.000</b>. <a href="#" data-buy="upgrade" data-src="main">Upgrade sekarang</a>.</p>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+ <div class="k">Setelah bayar</div>
+ <h2>Cara menerima produk</h2>
+ <div class="steps"><div class="px"><b>1 · CHECKOUT</b>Pilih paket dan selesaikan pembayaran di halaman checkout.</div><div class="px"><b>2 · TERIMA LINK</b>Link unduhan Google Drive dikirim ke email/WhatsApp setelah pembayaran terkonfirmasi.</div><div class="px"><b>3 · INSTAL & MAIN</b>Buka <i>00_MULAI_DI_SINI.html</i>, pasang di HP/laptop, dan selesaikan quest pertamamu hari ini.</div></div>
+</div></section>
+
+<section style="padding-top:10px" id="faq"><div class="wrap">
+ <div class="k">FAQ</div><h2>Pertanyaan yang sering muncul</h2>
+ <details><summary>Saya sibuk kerja. Butuh waktu berapa lama sehari?</summary><p>Cukup 10 menit: cek quest hari ini, centang kebiasaan, catat pengeluaran. Game-nya opsional sebagai hadiah setelah tugas nyata selesai.</p></details>
+ <details><summary>Apakah perlu internet?</summary><p>Tidak. Semua aplikasi berjalan offline. Internet hanya untuk mengunduh file (dan membuka pertama kali di iPhone).</p></details>
+ <details><summary>Bisa dipakai di iPhone?</summary><p>Bisa. iPhone/iPad memakai versi Web App: buka link dari Safari → Bagikan → Tambah ke Layar Utama. Ikon Labo muncul di layar utama dan berjalan offline. Android memakai APK, laptop memakai versi desktop.</p></details>
+ <details><summary>Data saya disimpan di mana?</summary><p>Di perangkatmu sendiri, tidak dikirim ke server. Ada backup otomatis serta ekspor/impor CSV untuk pindah HP ↔ laptop.</p></details>
+ <details><summary>Bayar bulanan?</summary><p>Tidak. Sekali bayar, file dan aplikasi menjadi milikmu, termasuk pembaruan perbaikan untuk versi yang dibeli.</p></details>
+ <details><summary>Apa bedanya Core dan Ultimate?</summary><p>Core untuk sistem pribadi (kerja, kebiasaan, keuangan). Ultimate menambah aplikasi versi PRO, LABO Asisten (Companion), dua ebook, dan sistem perusahaan lengkap untuk yang memimpin tim atau punya usaha.</p></details>
+ <details><summary>Apakah ini menjamin saya kaya atau bebas finansial?</summary><p>Tidak ada yang bisa menjamin itu. LABORU adalah alat bantu pencatatan, perencanaan, dan edukasi. Hasil bergantung pada kondisi dan konsistensi masing-masing, dan bukan nasihat investasi/keuangan profesional.</p></details>
+ <details><summary>Instal APK aman?</summary><p>APK tidak diunduh dari Play Store, sehingga Android menampilkan peringatan standar. Panduan instal langkah demi langkah disertakan.</p></details>
+</div></section>
+
+<section class="final"><div class="wrap">
+ <h2>Tahun depan, mau di lingkaran yang sama — <span style="color:var(--green2)">atau satu level di atas?</span></h2>
+ <p class="lead">Mulai dari <b data-price="entry_work" style="color:#fff">Rp79.000</b>. Sekali bayar, offline, di HP & laptop.</p>
+ <div class="cta" style="justify-content:center"><button class="btn go" data-buy="core" data-src="final">Ambil Core</button><button class="btn" data-buy="ultimate" data-src="final">Ambil Ultimate</button></div>
+</div></section>
+
+<footer><div class="wrap">
+ <p><a href="#" data-wa target="_blank" rel="noopener">Grup WhatsApp LABORU</a> · <a href="#" data-ig target="_blank" rel="noopener">Instagram @laboru_id</a></p>
+ <p>Harga dalam rupiah. Perbandingan "1 hari gaji" adalah ilustrasi berdasarkan gaji yang kamu masukkan atau contoh Rp5.000.000/bulan ÷ 22 hari kerja. LABORU adalah alat bantu produktivitas & edukasi, bukan nasihat keuangan, investasi, hukum, medis, atau psikologis profesional. Hasil setiap orang berbeda. Labo adalah karakter pendamping refleksi, bukan layanan kesehatan jiwa. Situs ini tidak merupakan bagian dari Meta Platforms, Inc.</p>
+ <p>© LABORU · Font: Plus Jakarta Sans & Silkscreen (SIL Open Font License)</p>
+</div></footer>
+
+<div class="sticky"><span><b>LABORU</b> · seharga ±1 hari gaji</span><a class="btn go" href="#paket">Lihat Paket</a></div>
+<div class="modal" id="lockM"><div class="box px"><h3>🔒 Terbuka di versi penuh</h3><p id="lockT">Fitur ini dikunci di demo.</p><div class="cta" style="justify-content:center"><a class="btn go" href="#paket" data-close>Lihat Paket</a><button class="btn" data-close>Lanjut demo</button></div></div></div>
+
+<script>
+const ENTRY={entry_work:['Dashboard karier Excel + Google Sheets','180 template CV ATS (ID & EN)','180 cover letter (ID & EN)','15 bidang kerja × 6 latar belakang'],entry_habit:['LABORU Daily Management (Excel + Sheets)','Weekly To-Do, Habit Builder 10×31','Task Manager, Budget 50/30/20, Debt Payment','Panduan PDF'],entry_finance:['LABORU Wealth Builder 17 sheet','Financial X-Ray, arus kas, dana darurat','Debt recovery, aset & liabilitas, roadmap 12 bulan','File contoh terisi + Google Sheets']};
+const EPV={entry_work:'ENTRY_Work-Toolkit',entry_habit:'ENTRY_Habit-Toolkit',entry_finance:'ENTRY_Finance-Toolkit'};function setEntry(k){const pv=document.getElementById('entryPv');if(pv)pv.src='img/pv/'+EPV[k]+'.jpg';document.querySelectorAll('#entrySeg button').forEach(b=>b.classList.toggle('on',b.dataset.e===k));document.getElementById('entryList').innerHTML=ENTRY[k].map(x=>'<li>'+x+'</li>').join('');document.getElementById('entryBuy').dataset.buy=k}
+document.getElementById('entrySeg').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setEntry(b.dataset.e)});setEntry('entry_work');
+const EC=[['r09','Ebook From Zero to Financial Freedom Vol. 1','R09_Ebook-From-Zero-to-Financial-Freedom','Ebook pixel-art tentang realitas uang & jebakan finansial.',['61 halaman: Part 00 Reality of Life & Money + Part 01 Invisible Trap','Studi kasus simulasi, decision room, workbook & mission log','Master Page Blueprint 500 halaman (PDF + Excel)','Volume berikutnya dikirim gratis'],1],
+['r01','CV ATS Pack','R01_CV-ATS-Pack','CV satu kolom yang terbaca sistem ATS rekrutmen.',['180 template Word (.docx), Indonesia & Inggris','15 bidang kerja × 6 latar belakang (fresh graduate s/d manajer)','Panduan pengisian di setiap file','Bisa diedit di Word / Google Docs']],
+['r02','Creative CV & Portfolio Pack','R02_Creative-CV-Portfolio-Pack','Tampil beda dengan CV kreatif & portofolio studi kasus.',['180 CV kreatif berwarna (ID & EN)','180 portfolio paper format before–after','15 bidang kerja, dengan contoh isi','Word (.docx), siap ekspor PDF']],
+['r03','Cover Letter & Email Lamaran','R03_Cover-Letter-Email-Pack','Surat & email lamaran yang tinggal disesuaikan.',['180 cover letter formal (ID & EN)','180 email lamaran: subjek + isi siap kirim','15 bidang kerja × 6 latar belakang','Word (.docx)']],
+['r05','LABO Asisten','R05_Labo-Companion-App','Teman virtual yang tumbuh bersama kebiasaan harianmu.',['Rawat Labo: beri makan, main, dan tidurkan','Cek-in mood & refleksi singkat','Level naik seiring kebiasaan baik','Android (APK), iPhone (Web App), Windows, macOS']],
+['r06','Ebook Level Up Diri','R06_Ebook-Level-Up-Diri','Program 30 hari untuk kebiasaan, karier, keuangan & mental.',['16 halaman PDF + worksheet siap cetak','Langkah kecil tiap hari, 4 area hidup','Dibaca di HP atau laptop']],
+['r07','Company Preparation System','R07_Company-Preparation-System','Sistem perusahaan siap pakai dalam satu hub.',['Company System Hub (buka di browser)','390+ dokumen: governance, struktur & peran, SOP, kontrol dokumen, HR, procurement, audit internal','Template kosong + contoh terisi + workflow','Roadmap implementasi 90 hari']],
+['r08','Company Improvement System','R08_Company-Improvement-System','Turunkan downtime, naikkan efisiensi secara terukur.',['Downtime Tracker + ROI Calculator (Excel)','Production Efficiency Playbook + worked example','7 tracker: KPI, CAPA, tenggat, dokumen, SOP, procurement, supplier','Panduan Bahasa Indonesia + 15 AI prompt bisnis']]];
+const P=LABORU_PRODUCTS,fmt=n=>n.toLocaleString('id-ID',{maximumFractionDigits:1});
+function drawPrices(){document.getElementById('ecList').innerHTML=EC.map(([k,n,pv,d,it,nw])=>`<div class="ei px${nw?' new':''}"><div class="pv"><img src="img/pv/${pv}.jpg" alt="Preview ${n}" loading="lazy"></div>${nw?'<span class="nb">BARU</span>':''}<b>${n}</b><small>${d}</small><details><summary>Lihat isi paket</summary><ul>${it.map(x=>'<li>'+x+'</li>').join('')}</ul></details><div class="row"><b>${LABORU_rp(LABORU_PRODUCTS[k].p)}</b><button class="btn" data-buy="${k}" data-src="eceran">Beli</button></div></div>`).join('');
+/* kalkulator 1 hari gaji */
+document.getElementById('pdCore').textContent=LABORU_rp(Math.round(P.core.p/365));document.getElementById('pdUlt').textContent=LABORU_rp(Math.round(P.ultimate.p/365));
+document.querySelectorAll('.perday')[0].textContent='≈ '+LABORU_rp(Math.round(P.core.p/365))+'/hari selama setahun';document.querySelectorAll('.perday')[1].textContent='≈ '+LABORU_rp(Math.round(P.ultimate.p/365))+'/hari selama setahun';
+}
+drawPrices();document.addEventListener('laboru:prices',()=>{drawPrices();calc()});
+function calc(){const el=document.getElementById('sal');const v=parseInt(el.value.replace(/\D/g,''))||0;el.value=v?v.toLocaleString('id-ID'):'';const d=v/22;
+ document.getElementById('oDay').textContent=d?LABORU_rp(Math.round(d)):'–';
+ [['oCore','core'],['oUlt','ultimate'],['oEnt','entry_work']].forEach(([id,k])=>document.getElementById(id).textContent=d?fmt(P[k].p/d)+' hari':'–')}
+document.getElementById('sal').addEventListener('input',calc);calc();
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ViewContent saat bagian paket terlihat */
+let vc=false;new IntersectionObserver(es=>{if(!vc&&es.some(e=>e.isIntersecting)){vc=true;LABORU_track('ViewContent',{content_ids:['entry_work','core','ultimate'],content_type:'product',content_name:'LABORU Paket',value:189000,currency:'IDR'})}},{threshold:.25}).observe(document.getElementById('paket'));
+/* ---- demo ---- */
+const RESET_MIN=10;let t0=0,timer=null;
+function clearDemo(){['laboru_v1','levelup_game_v1','smos2','lb_bk_exp','lb_bk_expsig','lg_bk_auto'].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}})}
+function startDemo(){clearDemo();const f=document.getElementById('frame');f.innerHTML='<iframe src="demo.html" title="Demo LABORU Level Up" allow="autoplay; fullscreen"></iframe>';t0=Date.now();LABORU_track('DemoStart',{content_name:'LABORU demo'},true);
+ clearInterval(timer);timer=setInterval(()=>{const left=Math.max(0,RESET_MIN*60-Math.floor((Date.now()-t0)/1000));document.getElementById('dTimer').textContent='Data demo direset dalam '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0');if(left===60)showLock('Data demo akan direset 1 menit lagi. Versi penuh menyimpan datamu permanen.');if(left<=0){startDemo()}},1000);
+ setTimeout(()=>{try{f.querySelector('iframe').focus()}catch(e){}},800)}
+document.getElementById('startDemo').addEventListener('click',startDemo);
+function showLock(t){document.getElementById('lockT').textContent=t;document.getElementById('lockM').classList.add('on')}
+document.getElementById('lockM').addEventListener('click',e=>{if(e.target.id==='lockM'||e.target.closest('[data-close]'))document.getElementById('lockM').classList.remove('on')});
+addEventListener('message',e=>{const d=e.data||{};if(d.src!=='lbdemo')return;if(d.t==='lock'){LABORU_track('DemoLockedFeature',{content_name:d.label||d.a},true);showLock('"'+(d.label||'Fitur ini')+'" terbuka di versi penuh: ekspor Excel/PDF/CSV, backup, dan preview tanpa watermark.')}if(d.t==='shop'){location.hash='#paket'}});
+</script>
+</body>
+</html>
