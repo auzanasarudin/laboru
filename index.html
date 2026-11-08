@@ -369,7 +369,7 @@ let vc=false;new IntersectionObserver(es=>{if(!vc&&es.some(e=>e.isIntersecting))
 /* ---- demo ---- */
 const RESET_MIN=10;let t0=0,timer=null;
 function clearDemo(){['laboru_v1','levelup_game_v1','smos2','lb_bk_exp','lb_bk_expsig','lg_bk_auto'].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}})}
-function startDemo(){clearDemo();const f=document.getElementById('frame');f.innerHTML='<iframe src="demo.html" title="Demo LABORU Level Up" allow="autoplay; fullscreen"></iframe>';t0=Date.now();LABORU_track('DemoStart',{content_name:'LABORU demo'},true);
+function startDemo(){clearDemo();const f=document.getElementById('frame');f.innerHTML='<iframe src="https://laboru-demo.laboru.workers.dev/demo" title="Demo LABORU Level Up" allow="autoplay; fullscreen"></iframe>';t0=Date.now();LABORU_track('DemoStart',{content_name:'LABORU demo'},true);
  clearInterval(timer);timer=setInterval(()=>{const left=Math.max(0,RESET_MIN*60-Math.floor((Date.now()-t0)/1000));document.getElementById('dTimer').textContent='Data demo direset dalam '+Math.floor(left/60)+':'+String(left%60).padStart(2,'0');if(left===60)showLock('Data demo akan direset 1 menit lagi. Versi penuh menyimpan datamu permanen.');if(left<=0){startDemo()}},1000);
  setTimeout(()=>{try{f.querySelector('iframe').focus()}catch(e){}},800)}
 document.getElementById('startDemo').addEventListener('click',startDemo);

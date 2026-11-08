@@ -7,7 +7,15 @@ Situs statis untuk GitHub Pages.
 | `index.html` | Landing utama: hero, fitur, demo game, paket, eceran, FAQ |
 | `paket.html` | Langsung pilih paket + checkout (`?p=core`, `?p=ultimate`, `?p=entry_habit`, `&go=1`) |
 | `checkout.html` | Checkout singkat untuk iklan |
-| `demo.html` | Demo game (ekspor terkunci) |
+
+Demo game dimuat dari Cloudflare Worker `laboru-demo` (kode diacak, hanya tampil di dalam landing page ini).
+
+## Tujuan iklan per market
+| Market | Iklan | Arahkan ke |
+|---|---|---|
+| 1 Awam | Kreatif game | `index.html` (landing utama + demo) |
+| 2 Ikan kecil | Produk eceran | `index.html#eceran` |
+| 3 Ikan besar | Paket Core / Ultimate | `paket.html?p=core` / `paket.html?p=ultimate` (landing singkat, langsung checkout) |
 
 ## Mengubah harga & link
 - Cara cepat: ubah Google Sheet harga (tab pertama: `kode | nama | harga | harga_coret | link_checkout`). Halaman membaca sheet itu setiap dibuka.

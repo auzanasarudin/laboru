@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /main-x7k29/
+Allow: /
